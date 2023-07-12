@@ -1,0 +1,137 @@
+{
+  "menu": [
+    {
+      "name": "Harami Steak",
+      "img": "/src/image/menu1.JPG",
+      "unitPrice": 3630,
+      "type": "main",
+      "id": 1
+    },
+    {
+      "name": "Special Beef Tongue",
+      "img": "/src/image/menu2.JPG",
+      "unitPrice": 1980,
+      "type": "main",
+      "id": 2
+    },
+    {
+      "name": "Premium Harami",
+      "img": "/src/image/menu3.JPG",
+      "unitPrice": 1738,
+      "type": "main",
+      "id": 3
+    },
+    {
+      "name": "Premium Kalbi",
+      "img": "/src/image/menu4.JPG",
+      "unitPrice": 2420,
+      "type": "main",
+      "id": 4
+    },
+    {
+      "name": "Premium Sirloin",
+      "img": "/src/image/menu5.JPG",
+      "unitPrice": 2420,
+      "type": "main",
+      "id": 5
+    },
+    {
+      "name": "Premium Flap Meat",
+      "img": "/src/image/menu6.JPG",
+      "unitPrice": 2068,
+      "type": "main",
+      "id": 6
+    },
+    {
+      "name": "Sukiyaki Harami",
+      "img": "/src/image/menu7.JPG",
+      "unitPrice": 1848,
+      "type": "main",
+      "id": 7
+    },
+    {
+      "name": "Premium Tongue Yukke",
+      "img": "/src/image/menu8.JPG",
+      "unitPrice": 1980,
+      "type": "main",
+      "id": 8
+    },
+    {
+      "name": "Yukke with Mayonnaise",
+      "img": "/src/image/menu9.JPG",
+      "unitPrice": 1100,
+      "type": "main",
+      "id": 9
+    },
+    {
+      "name": "Beef Toro Onigiri",
+      "img": "/src/image/menu10.JPG",
+      "unitPrice": 1980,
+      "type": "main",
+      "id": 10
+    },
+    {
+      "name": "Jyo Mino",
+      "img": "/src/image/menu11.JPG",
+      "unitPrice": 968,
+      "type": "main",
+      "id": 11
+    },
+    {
+      "name": "Kimchi Assort",
+      "img": "/src/image/menu12.JPG",
+      "unitPrice": 1023,
+      "type": "side",
+      "id": 12
+    },
+    {
+      "name": "Fresh Sesame",
+      "img": "/src/image/menu13.JPG",
+      "unitPrice": 880,
+      "type": "side",
+      "id": 13
+    },
+    {
+      "name": "Namul",
+      "img": "/src/image/menu14.JPG",
+      "unitPrice": 770,
+      "type": "side",
+      "id": 14
+    },
+    {
+      "name": "Bibimbap",
+      "img": "/src/image/menu15.JPG",
+      "unitPrice": 935,
+      "type": "side",
+      "id": 15
+    },
+    {
+      "name": "Stone-roasted Bibimbap",
+      "img": "/src/image/menu16.JPG",
+      "unitPrice": 1078,
+      "type": "side",
+      "id": 16
+    },
+    {
+      "name": "Lettuce Salad",
+      "img": "/src/image/menu17.JPG",
+      "unitPrice": 1045,
+      "type": "side",
+      "id": 17
+    },
+    {
+      "name": "Egg Soup",
+      "img": "/src/image/menu18.JPG",
+      "unitPrice": 528,
+      "type": "side",
+      "id": 18
+    },
+    {
+      "name": "Korean Cold Noodles",
+      "img": "/src/image/menu19.JPG",
+      "unitPrice": 1045,
+      "type": "side",
+      "id": 19
+    }
+  ]
+}
