@@ -27,7 +27,7 @@ function SignUp() {
       });
       if (error) throw error;
       alert('Check you email for verificaiton link');
-      navigate('/userHome');
+      navigate('/home');
     } catch (error) {
       alert(error);
     }

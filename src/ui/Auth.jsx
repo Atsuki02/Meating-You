@@ -30,7 +30,11 @@ function Auth() {
             Sign up
           </p>
         </div>
-        {formState ? <Login setFormState={setFormState} /> : <SignUp />}
+        {formState ? (
+          <Login setFormState={setFormState}/>
+        ) : (
+          <SignUp />
+        )}
       </form>
     </div>
   );
