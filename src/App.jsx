@@ -3,30 +3,48 @@ import Auth from './ui/Auth';
 import Home from './ui/Home';
 import Error from './ui/Error';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTokenData, setToken } from './features/user/userSlice';
+import {
+  createUser,
+  getTokenData,
+  loginUser,
+  setToken,
+} from './features/user/userSlice';
 import { useEffect } from 'react';
+import Table from './ui/Table';
 
 function App() {
   const token = useSelector(getTokenData);
   const dispatch = useDispatch();
 
-  if (token) {
-    sessionStorage.setItem('token', JSON.stringify(token));
-  }
+  useEffect(() => {
+    if (token) {
+      sessionStorage.setItem('token', JSON.stringify(token));
+    }
+  }, [token]);
 
   useEffect(() => {
-    if (sessionStorage.getItem('token')) {
-      let data = JSON.parse(sessionStorage.getItem('token'));
+    const storedToken = sessionStorage.getItem('token');
+    if (storedToken) {
+      const data = JSON.parse(storedToken);
       dispatch(setToken(data));
+      if (data?.user) {
+        const userData = {
+          fullName: data.user.user_metadata.full_name,
+          email: data.user.email,
+        };
+        dispatch(loginUser());
+        dispatch(createUser(userData));
+      }
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Navigate replace to="auth" />} />
+        <Route index element={<Navigate replace to="home" />} />
+        <Route path="home" element={<Home />} />
+        <Route path="table" element={<Table />} />
         <Route path="auth" element={<Auth />} />
-        {token ? <Route path="home" element={<Home />} /> : null}
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

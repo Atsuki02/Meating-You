@@ -8,20 +8,20 @@ import { supabase } from '../../supabase';
 function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [fullName, setFullName] = useState('');
+  const [userName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createUser(fullName, email, password));
+    dispatch(createUser(userName, email, password));
     try {
       const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
         options: {
           data: {
-            full_name: fullName,
+            full_name: userName,
           },
         },
       });
@@ -40,7 +40,7 @@ function SignUp() {
           className="w-full rounded-sm px-4 py-2 focus:outline-red-800 "
           type="text"
           placeholder="Fullname"
-          value={fullName}
+          value={userName}
           onChange={(e) => setFullName(e.target.value)}
         />
         <input

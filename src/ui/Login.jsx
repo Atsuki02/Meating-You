@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabase';
@@ -23,7 +23,7 @@ function Login({ setFormState }) {
 
       if (data) {
         const userData = {
-          fullName: data.user.user_metadata.full_name,
+          userName: data.user.user_metadata.full_name,
           email: data.user.email,
           password: password,
         };
@@ -41,7 +41,7 @@ function Login({ setFormState }) {
     <>
       <div className="mt-6 flex flex-col items-center justify-center space-y-6 lg:mt-6">
         <input
-          className="w-full rounded-sm px-4 py-2 focus:outline-red-800 "
+          className="focus: w-full rounded-sm px-4 py-2 focus:outline-red-800"
           type="email"
           placeholder="Email"
           value={email}

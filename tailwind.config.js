@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 // eslint-disable-next-line
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
+  ],
   theme: {
     fontFamily: {
       sans: 'Cardo',
@@ -27,5 +31,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 };
