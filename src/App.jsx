@@ -11,6 +11,10 @@ import {
 } from './features/user/userSlice';
 import { useEffect } from 'react';
 import Table from './ui/Table';
+import YourInformationPage from './ui/YourInfomationPage';
+import ConfirmationPage from './ui/ConfirmationPage';
+import ReservationCompletePage from './ui/ReservationCompletePage';
+import Header from './ui/Header';
 
 function App() {
   const token = useSelector(getTokenData);
@@ -41,10 +45,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Navigate replace to="home" />} />
-        <Route path="home" element={<Home />} />
-        <Route path="table" element={<Table />} />
-        <Route path="auth" element={<Auth />} />
+        <Route element={<Header />}>
+          <Route index element={<Navigate replace to="home" />} />
+          <Route path="home" element={<Home />} />
+          <Route path="table" element={<Table />} />
+          <Route path="yourInformationPage" element={<YourInformationPage />} />
+          <Route path="confirmationPage" element={<ConfirmationPage />} />
+          <Route
+            path="reservationCompletePage"
+            element={<ReservationCompletePage />}
+          />
+          <Route path="auth" element={<Auth />} />
+        </Route>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

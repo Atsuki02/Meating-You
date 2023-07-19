@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import Datepicker from 'react-tailwindcss-datepicker';
-import Header from './Header';
 import Button from './Button';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setReservationData } from '../features/form/formSlice';
 
 function Table() {
   const currentDate = new Date();
@@ -16,45 +18,45 @@ function Table() {
   });
 
   const [time, setTime] = useState('');
+
   const handleValueChange = (newDate) => {
-    console.log('newValue:', newDate);
     setDate(newDate);
   };
 
+  const [numberOfPeople, setNumberOfPeople] = useState(0);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function handleNextPage() {
+    const reservationData = {
+      reservationDate: date.startDate,
+      reservationTime: time,
+      numberOfPeople: numberOfPeople,
+    };
+    console.log(reservationData);
+    dispatch(setReservationData(reservationData));
+    navigate('/yourInformationPage');
+  }
+
   return (
-    <div className="relative h-screen w-screen bg-[url('./image/sp-top1.JPG')] bg-cover bg-center bg-no-repeat text-center text-white after:absolute after:bottom-0 after:left-0 after:right-0  after:top-0 after:z-10 after:bg-custom-background lg:bg-[url('./image/top1.JPG')]">
-      <Header />
-      <div className="relative z-20 mx-auto flex flex-col items-center justify-center space-x-10 p-10 lg:w-1/2 lg:space-y-6  lg:py-0">
-        <h1 className="pb-5 text-xl font-bold lg:pb-0 lg:text-3xl">
+    <form className="relative flex h-screen w-screen items-center justify-center bg-teal-100 ">
+      <div className="relative flex flex-col items-center justify-center space-y-4 p-4 lg:mx-auto  lg:w-1/2 lg:space-y-6 lg:p-0">
+        <h1 className="pb-10 text-2xl font-bold lg:pb-2 lg:text-3xl">
           Book a table
         </h1>
-        <div className="flex w-full flex-col items-start">
-          <span className="pb-2">Number of people</span>
-          <input
-            type="number"
-            placeholder="0"
-            min={1}
-            max={10}
-            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-red-800 focus:outline-none focus:ring-0"
-          />
-        </div>
         <div className="flex w-full flex-col items-start">
           <span className="pb-2">Date of reservations</span>
           <Datepicker
             minDate={new Date()}
-            disabledDates={[
-              {
-                startDate: nextThursday,
-                endDate: '2023-02-05',
-              },
-            ]}
-            primaryColor={'red'}
+            primaryColor={'teal'}
             asSingle={true}
             value={date}
             onChange={handleValueChange}
             useRange={false}
             readOnly={true}
-            inputClassName="w-full h-10 rounded-md focus:ring-0 focus:border-2 focus:border-red-800 bg-white"
+            popoverDirection="down"
+            inputClassName="w-full h-10 rounded-md focus:ring-0 focus:border-2 focus:border-teal-600 bg-white"
           />
         </div>
         <div className="flex w-full flex-col items-start pb-2">
@@ -62,8 +64,9 @@ function Table() {
           <select
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-red-800 focus:outline-none focus:ring-0"
+            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           >
+            <option hidden></option>
             <option>17:30</option>
             <option>18:00</option>
             <option>18:30</option>
@@ -75,9 +78,23 @@ function Table() {
             <option>21:30</option>
           </select>
         </div>
-        <Button type="next">Next</Button>
+        <div className="flex w-full flex-col items-start pb-10">
+          <span className="pb-2">Number of people</span>
+          <input
+            type="number"
+            placeholder="0"
+            min={1}
+            max={10}
+            value={numberOfPeople}
+            onChange={(e) => setNumberOfPeople(e.target.value)}
+            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
+          />
+        </div>
+        <Button type="continue" onClick={handleNextPage}>
+          Continue
+        </Button>
       </div>
-    </div>
+    </form>
   );
 }
 

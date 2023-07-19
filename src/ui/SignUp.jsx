@@ -37,21 +37,21 @@ function SignUp() {
     <>
       <div className="mt-6 flex flex-col items-center justify-center space-y-6 lg:mt-6">
         <input
-          className="w-full rounded-sm px-4 py-2 focus:outline-red-800 "
+          className="w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           type="text"
           placeholder="Fullname"
           value={userName}
           onChange={(e) => setFullName(e.target.value)}
         />
         <input
-          className="w-full rounded-sm px-4 py-2 focus:outline-red-800 "
+          className="w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0 "
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="mb-6 w-full rounded-sm px-4 py-2 focus:outline-red-800 "
+          className="mb-6 w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           type="password"
           placeholder="Password"
           value={password}

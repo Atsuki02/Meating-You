@@ -41,14 +41,14 @@ function Login({ setFormState }) {
     <>
       <div className="mt-6 flex flex-col items-center justify-center space-y-6 lg:mt-6">
         <input
-          className="focus: w-full rounded-sm px-4 py-2 focus:outline-red-800"
+          className="focus: w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="mb-6 w-full rounded-sm px-4 py-2 focus:outline-red-800 "
+          className="mb-6 w-full  rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600  focus:ring-0 "
           type="password"
           placeholder="Password"
           value={password}
@@ -58,7 +58,7 @@ function Login({ setFormState }) {
           Login
         </Button>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 text-center">
         <p>
           Not a member?
           <span
