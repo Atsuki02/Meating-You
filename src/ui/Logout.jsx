@@ -13,7 +13,7 @@ function Logout() {
     sessionStorage.removeItem('token');
     localStorage.clear();
     dispatch(logoutUser());
-    navigate('/auth');
+    navigate('/home');
   };
 
   return (
