@@ -18,7 +18,7 @@ function Logout() {
 
   return (
     <button onClick={handleLogout}>
-      <span className="pr-2 text-teal-600 lg:pr-3">
+      <span className="pr-2 lg:pr-3">
         <FontAwesomeIcon icon={faRightFromBracket} />
       </span>
     </button>

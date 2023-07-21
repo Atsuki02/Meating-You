@@ -4,21 +4,30 @@ import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setReservationData } from '../features/form/formSlice';
-import { supabase } from '../../supabase';
 
 function Table() {
-  const currentDate = new Date();
-  const currentDayOfWeek = currentDate.getDay();
-  const daysUntilNextThursday = (4 - currentDayOfWeek + 7) % 7;
-  const nextThursday = new Date(currentDate);
-  nextThursday.setDate(currentDate.getDate() + daysUntilNextThursday);
-
   const [date, setDate] = useState({
     startDate: null,
     endDate: null,
   });
 
-  const [time, setTime] = useState('');
+  const [selectedTime, setSelectedTime] = useState('17:30');
+
+  const timeOptions = [
+    '17:30',
+    '18:00',
+    '18:30',
+    '19:00',
+    '19:30',
+    '20:00',
+    '20:30',
+    '21:00',
+    '21:30',
+  ];
+
+  const handleTimeSelection = (time) => {
+    setSelectedTime(time);
+  };
 
   const handleValueChange = (newDate) => {
     setDate(newDate);
@@ -33,7 +42,7 @@ function Table() {
     e.preventDefault();
     const reservationData = {
       reservationDate: date.startDate,
-      reservationTime: time,
+      reservationTime: selectedTime,
       numberOfPeople: numberOfPeople,
     };
 
@@ -41,13 +50,13 @@ function Table() {
     navigate('/yourInformationPage');
   }
   return (
-    <form className="relative flex h-screen w-screen items-center justify-center bg-teal-100 ">
-      <div className="relative flex flex-col items-center justify-center space-y-4 p-4 lg:mx-auto  lg:w-1/2 lg:space-y-6 lg:p-0">
-        <h1 className="pb-10 text-2xl font-bold lg:pb-2 lg:text-3xl">
-          Book a table
+    <form className="flex h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 ">
+      <div className="flex w-full flex-col items-center justify-center space-y-8 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
+        <h1 className="pb-6 text-2xl font-bold lg:pb-10 lg:text-3xl">
+          Book your table
         </h1>
-        <div className="flex w-full flex-col items-start">
-          <span className="pb-2">Date of reservations</span>
+        <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
+          <span className="pb-2 font-semibold">Date</span>
           <Datepicker
             minDate={new Date()}
             primaryColor={'teal'}
@@ -60,27 +69,24 @@ function Table() {
             inputClassName="w-full h-10 rounded-md focus:ring-0 focus:border-2 focus:border-teal-600 bg-white"
           />
         </div>
-        <div className="flex w-full flex-col items-start pb-2">
-          <span className="pb-2">Time of reservations</span>
-          <select
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
-          >
-            <option hidden></option>
-            <option>17:30</option>
-            <option>18:00</option>
-            <option>18:30</option>
-            <option>19:00</option>
-            <option>19:30</option>
-            <option>20:00</option>
-            <option>20:30</option>
-            <option>21:00</option>
-            <option>21:30</option>
-          </select>
+        <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
+          <span className="pb-2 font-semibold">Time</span>
+          <div className="flex flex-wrap">
+            {timeOptions.map((time) => (
+              <div
+                key={time}
+                className={`m-1 cursor-pointer rounded-md border-[1px] border-slate-200 p-2 ${
+                  selectedTime === time ? 'bg-teal-600 text-white' : ''
+                }`}
+                onClick={() => handleTimeSelection(time)}
+              >
+                {time}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="flex w-full flex-col items-start pb-10">
-          <span className="pb-2">Number of people</span>
+        <div className="flex w-full flex-row items-center justify-between rounded-md border-2 border-slate-200 p-4">
+          <span className="font-semibold">Guests</span>
           <input
             type="number"
             placeholder="0"
@@ -88,7 +94,7 @@ function Table() {
             max={10}
             value={numberOfPeople}
             onChange={(e) => setNumberOfPeople(e.target.value)}
-            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
+            className="h-10 rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           />
         </div>
         <Button type="continue" onClick={handleNextPage}>
