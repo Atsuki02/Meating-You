@@ -2,14 +2,27 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getFormData } from '../features/form/formSlice';
+import { supabase } from '../../supabase';
 
 const ConfirmationPage = () => {
   const formData = useSelector(getFormData);
   const navigate = useNavigate();
 
-  const handleConfirm = () => {
-    navigate('/reservationCompletePage');
-  };
+  async function handleConfirm() {
+    try {
+      const { data, error } = await supabase
+        .from('reservations')
+        .insert(formData);
+      navigate('/reservationCompletePage');
+      if (error) {
+        console.error('Error occurred', error);
+      } else {
+        console.log('Succeeded', data);
+      }
+    } catch (error) {
+      console.error('Error occurred', error);
+    }
+  }
 
   return (
     <div className="relative flex min-h-screen w-screen items-center justify-center bg-teal-100 px-2 py-8">

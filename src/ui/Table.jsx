@@ -4,6 +4,7 @@ import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setReservationData } from '../features/form/formSlice';
+import { supabase } from '../../supabase';
 
 function Table() {
   const currentDate = new Date();
@@ -28,17 +29,17 @@ function Table() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleNextPage() {
+  function handleNextPage(e) {
+    e.preventDefault();
     const reservationData = {
       reservationDate: date.startDate,
       reservationTime: time,
       numberOfPeople: numberOfPeople,
     };
-    console.log(reservationData);
+
     dispatch(setReservationData(reservationData));
     navigate('/yourInformationPage');
   }
-
   return (
     <form className="relative flex h-screen w-screen items-center justify-center bg-teal-100 ">
       <div className="relative flex flex-col items-center justify-center space-y-4 p-4 lg:mx-auto  lg:w-1/2 lg:space-y-6 lg:p-0">
