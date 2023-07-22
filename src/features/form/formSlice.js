@@ -7,8 +7,10 @@ const initialState = {
     email: '',
     phoneNumber: '',
     reservationDate: '',
-    reservationTime: '',
+    reservationTime: '17:30',
     numberOfPeople: '',
+    tableType: '',
+    tableImage: '',
   },
 };
 
@@ -20,6 +22,10 @@ const formSlice = createSlice({
       state.formData.reservationDate = action.payload.reservationDate;
       state.formData.reservationTime = action.payload.reservationTime;
       state.formData.numberOfPeople = action.payload.numberOfPeople;
+    },
+    setTableType(state, action) {
+      state.formData.tableType = action.payload.tableType;
+      state.formData.tableImage = action.payload.Image;
     },
     setUserData(state, action) {
       state.formData.firstName = action.payload.firstName;
@@ -35,7 +41,7 @@ const formSlice = createSlice({
   },
 });
 
-export const { setReservationData, setUserData, clearFormData } =
+export const { setReservationData, setTableType, setUserData, clearFormData } =
   formSlice.actions;
 
 export const getFormData = (state) => state.form.formData;

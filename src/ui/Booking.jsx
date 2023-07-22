@@ -4,6 +4,8 @@ import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setReservationData } from '../features/form/formSlice';
+import TitlePagenation from './TitlePagenation';
+import BackButton from './BackButton';
 
 function Booking() {
   const [date, setDate] = useState({
@@ -40,6 +42,12 @@ function Booking() {
 
   function handleNextPage(e) {
     e.preventDefault();
+
+    if (!date.startDate) {
+      alert('Please select a date.');
+      return;
+    }
+
     const reservationData = {
       reservationDate: date.startDate,
       reservationTime: selectedTime,
@@ -50,11 +58,13 @@ function Booking() {
     navigate('/table');
   }
   return (
-    <form className="flex h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 ">
-      <div className="flex w-full flex-col items-center justify-center space-y-8 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
-        <h1 className="pb-6 text-2xl font-bold lg:pb-10 lg:text-3xl">
-          Book your table
-        </h1>
+    <form
+      onSubmit={handleNextPage}
+      className="flex h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 "
+    >
+      <BackButton />
+      <div className="flex w-full flex-col items-center justify-center space-y-6 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
+        <TitlePagenation title="Book your table" page="1" />
         <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
           <span className="pb-2 font-semibold">Date</span>
           <Datepicker
@@ -90,6 +100,7 @@ function Booking() {
           <input
             type="number"
             placeholder="0"
+            required
             min={1}
             max={10}
             value={numberOfPeople}
@@ -97,9 +108,7 @@ function Booking() {
             className="h-10 rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           />
         </div>
-        <Button type="continue" onClick={handleNextPage}>
-          Continue
-        </Button>
+        <Button type="continue">Continue</Button>
       </div>
     </form>
   );

@@ -16,6 +16,7 @@ import ReservationCompletePage from './ui/ReservationCompletePage';
 import Header from './ui/Header';
 import Booking from './ui/Booking';
 import Table from './ui/Table';
+import BackButton from './ui/BackButton';
 
 function App() {
   const token = useSelector(getTokenData);
@@ -46,19 +47,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route index element={<Navigate replace to="home" />} />
+        <Route path="home" element={<Home />} />
         <Route element={<Header />}>
-          <Route index element={<Navigate replace to="home" />} />
-          <Route path="home" element={<Home />} />
           <Route path="booking" element={<Booking />} />
           <Route path="table" element={<Table />} />
           <Route path="yourInformationPage" element={<YourInformationPage />} />
           <Route path="confirmationPage" element={<ConfirmationPage />} />
-          <Route
-            path="reservationCompletePage"
-            element={<ReservationCompletePage />}
-          />
-          <Route path="auth" element={<Auth />} />
         </Route>
+        <Route
+          path="reservationCompletePage"
+          element={<ReservationCompletePage />}
+        />
+        <Route path="auth" element={<Auth />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

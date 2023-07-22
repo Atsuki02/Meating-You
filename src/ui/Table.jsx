@@ -1,55 +1,91 @@
 import React, { useState } from 'react';
 import Button from './Button';
+import TitlePagenation from './TitlePagenation';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setTableType } from '../features/form/formSlice';
+import BackButton from './BackButton';
 
 function Table() {
-  const [selectedTable, setSelectedTable] = useState(null);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const tableOptions = [
     {
       id: 1,
-      name: 'Table Type 1',
+      name: 'Fantasy stylish Table',
       imageUrl: 'image/table1.jpg',
     },
     {
       id: 2,
-      name: 'Table Type 2',
+      name: 'Modern Fashionable Table',
       imageUrl: 'image/table2.jpg',
     },
     {
       id: 3,
-      name: 'Table Type 3',
+      name: 'Comfortable sofa Table',
       imageUrl: 'image/table3.jpg',
     },
   ];
+  const [selectedTable, setSelectedTable] = useState(tableOptions[0]);
 
-  const handleTableSelection = (tableId) => {
-    setSelectedTable(tableId);
+  const handleTableSelection = (table) => {
+    setSelectedTable(table);
   };
 
+  function handleNextPage(e) {
+    e.preventDefault();
+    const tableData = {
+      tableType: selectedTable.name,
+      tableImage: selectedTable.imageUrl,
+    };
+
+    dispatch(setTableType(tableData));
+    navigate('/yourInformationPage');
+  }
+
   return (
-    <form className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 ">
-      <div className="flex w-full flex-col items-center justify-center space-y-8 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
-        <h1 className="pb-6 pt-20 text-2xl font-bold lg:pb-10 lg:text-3xl">
-          Choose a table type
-        </h1>
-        <div className="flex h-[240px] w-[380px] overflow-x-scroll">
+    <form
+      onSubmit={handleNextPage}
+      className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 "
+    >
+      <BackButton />
+      <div className="flex w-full flex-col items-center justify-center space-y-10 lg:mx-auto lg:w-2/3 lg:space-y-6 lg:p-0">
+        <TitlePagenation title="Choose a table type" page="2" />
+        <div className="flex w-full overflow-x-scroll border-slate-200">
           {tableOptions.map((table) => (
             <div
-              className="m-1 w-[80%] flex-shrink-0  border-[1px] border-slate-200 p-2"
+              className={`flex w-[80%] flex-shrink-0 flex-col justify-around space-y-6 border-[2px] border-slate-200 px-6 py-4 lg:space-y-8 lg:px-10 lg:py-14 ${
+                selectedTable.id === table.id
+                  ? 'border-[4px] border-teal-700 '
+                  : ''
+              }`}
               key={table.id}
-              onClick={() => handleTableSelection(table.id)}
+              onClick={() => handleTableSelection(table)}
             >
-              <span className="font-bold">{table.name}</span>
+              <span className="text-base font-bold italic lg:text-2xl">
+                {table.name}
+              </span>
               <img
                 src={table.imageUrl}
                 alt={table.name}
-                className={`m-1 cursor-pointer rounded-md  p-2 ${
-                  selectedTable === table ? 'bg-teal-600 text-white' : ''
-                }`}
+                className="m-1 cursor-pointer rounded-md p-2 "
               />
             </div>
           ))}
         </div>
+        <span className=" text-center">
+          {Array.from({ length: tableOptions.length }, (_, i) => (
+            <span
+              key={i}
+              className={`text-xl ${
+                i === selectedTable.id - 1 ? 'text-teal-600' : 'text-gray-400'
+              }`}
+            >
+              •
+            </span>
+          ))}
+        </span>
+
         <Button type="continue">Continue</Button>
       </div>
     </form>
