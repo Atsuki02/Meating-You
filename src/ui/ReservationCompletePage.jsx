@@ -28,7 +28,9 @@ const ReservationCompletePage = () => {
           <Button type="home" onClick={() => navigate('/home')}>
             Go to homepage
           </Button>
-          <Button type="booking">My bookings</Button>
+          <Button type="booking" onClick={() => navigate('/yourbooking')}>
+            My bookings
+          </Button>
         </div>
       </div>
     </div>

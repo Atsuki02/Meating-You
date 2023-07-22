@@ -30,7 +30,7 @@ const ConfirmationPage = () => {
     <div className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 ">
       <BackButton />
       <div className="flex w-full flex-col items-center justify-center space-y-10 pt-20 lg:mx-auto lg:w-2/3 lg:space-y-6 lg:p-0">
-        <h1 className="mb-10 pb-6 text-2xl font-bold lg:mt-10 lg:pb-10 lg:text-3xl">
+        <h1 className="mb-4 text-2xl font-bold lg:mt-10 lg:pb-10 lg:text-3xl">
           Check Your Details
         </h1>
 

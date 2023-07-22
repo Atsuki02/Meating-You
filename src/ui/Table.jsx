@@ -50,7 +50,7 @@ function Table() {
     >
       <BackButton />
       <div className="flex w-full flex-col items-center justify-center space-y-10 lg:mx-auto lg:w-2/3 lg:space-y-6 lg:p-0">
-        <TitlePagenation title="Choose a table type" page="2" />
+        <TitlePagenation title="Table Type Selection" page="2" />
         <div className="flex w-full overflow-x-scroll border-slate-200">
           {tableOptions.map((table) => (
             <div

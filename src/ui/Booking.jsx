@@ -64,7 +64,7 @@ function Booking() {
     >
       <BackButton />
       <div className="flex w-full flex-col items-center justify-center space-y-6 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
-        <TitlePagenation title="Book your table" page="1" />
+        <TitlePagenation title="Select Date & Time" page="1" />
         <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
           <span className="pb-2 font-semibold">Date</span>
           <Datepicker
