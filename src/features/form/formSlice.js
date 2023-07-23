@@ -25,7 +25,7 @@ const formSlice = createSlice({
     },
     setTableType(state, action) {
       state.formData.tableType = action.payload.tableType;
-      state.formData.tableImage = action.payload.Image;
+      state.formData.tableImage = action.payload.tableImage;
     },
     setUserData(state, action) {
       state.formData.firstName = action.payload.firstName;

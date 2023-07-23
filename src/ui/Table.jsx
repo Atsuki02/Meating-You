@@ -13,17 +13,17 @@ function Table() {
     {
       id: 1,
       name: 'Fantasy stylish Table',
-      imageUrl: 'image/table1.jpg',
+      imageUrl: '/image/table1.jpg',
     },
     {
       id: 2,
       name: 'Modern Fashionable Table',
-      imageUrl: 'image/table2.jpg',
+      imageUrl: '/image/table2.jpg',
     },
     {
       id: 3,
       name: 'Comfortable sofa Table',
-      imageUrl: 'image/table3.jpg',
+      imageUrl: '/image/table3.jpg',
     },
   ];
   const [selectedTable, setSelectedTable] = useState(tableOptions[0]);
