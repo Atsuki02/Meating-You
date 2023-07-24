@@ -4,37 +4,32 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabase';
 import { useDispatch } from 'react-redux';
 import { createUser, loginUser, setToken } from '../features/user/userSlice';
+import { useLogin } from '../utils/useLogin';
+import SpinnerMini from './SpinnerMini';
 
 function Login({ setFormState }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { data, login, isLoading } = useLogin();
 
-  async function handleLogin(e) {
+  function handleLogin(e) {
     e.preventDefault();
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
+    if (!email || !password) return;
+    login({ email, password });
+
+    if (data) {
+      const userData = {
+        userName: data.user.user_metadata.full_name,
+        email: data.user.email,
         password: password,
-      });
-      console.log(data);
-      if (error) throw error;
-
-      if (data) {
-        const userData = {
-          userName: data.user.user_metadata.full_name,
-          email: data.user.email,
-          password: password,
-        };
-
-        dispatch(setToken(data));
-        dispatch(loginUser());
-        dispatch(createUser(userData));
-        navigate('/home');
-      }
-    } catch (error) {
-      alert(error.message);
+        id: data.user.id,
+      };
+      console.log(userData);
+      dispatch(setToken(data));
+      dispatch(loginUser());
+      dispatch(createUser(userData));
     }
   }
   return (
@@ -46,6 +41,7 @@ function Login({ setFormState }) {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
         />
         <input
           className="mb-6 w-full  rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600  focus:ring-0 "
@@ -53,9 +49,10 @@ function Login({ setFormState }) {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
-        <Button type="login" onClick={handleLogin}>
-          Login
+        <Button type="login" onClick={handleLogin} disabled={isLoading}>
+          {!isLoading ? 'Login' : <SpinnerMini />}
         </Button>
       </div>
       <div className="mt-6 text-center">
@@ -72,5 +69,4 @@ function Login({ setFormState }) {
     </>
   );
 }
-
 export default Login;

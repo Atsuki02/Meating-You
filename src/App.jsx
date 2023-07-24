@@ -17,10 +17,13 @@ import Header from './ui/Header';
 import Booking from './ui/Booking';
 import Table from './ui/Table';
 import YourBooking from './ui/YourBooking';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ProtectedRoute from './ui/ProtectedRoute';
 
 function App() {
   const token = useSelector(getTokenData);
   const dispatch = useDispatch();
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     if (token) {
@@ -46,23 +49,35 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route index element={<Navigate replace to="home" />} />
-        <Route path="home" element={<Home />} />
-        <Route element={<Header />}>
-          <Route path="booking" element={<Booking />} />
-          <Route path="table" element={<Table />} />
-          <Route path="yourInformationPage" element={<YourInformationPage />} />
-          <Route path="confirmationPage" element={<ConfirmationPage />} />
-          <Route path="yourbooking" element={<YourBooking />} />
-        </Route>
-        <Route
-          path="reservationCompletePage"
-          element={<ReservationCompletePage />}
-        />
-        <Route path="auth" element={<Auth />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route index element={<Navigate replace to="home" />} />
+          <Route path="home" element={<Home />} />
+          <Route element={<Header />}>
+            <Route path="booking" element={<Booking />} />
+            <Route path="table" element={<Table />} />
+            <Route
+              path="yourInformationPage"
+              element={<YourInformationPage />}
+            />
+            <Route path="confirmationPage" element={<ConfirmationPage />} />
+            <Route
+              path="yourbooking"
+              element={
+                <ProtectedRoute>
+                  <YourBooking />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+          <Route
+            path="reservationCompletePage"
+            element={<ReservationCompletePage />}
+          />
+          <Route path="auth" element={<Auth />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </QueryClientProvider>
     </BrowserRouter>
   );
 }

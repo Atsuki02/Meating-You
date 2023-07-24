@@ -4,33 +4,21 @@ import { useDispatch } from 'react-redux';
 import { createUser } from '../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabase';
+import { useSignup } from '../utils/useSignup';
+import SpinnerMini from './SpinnerMini';
 
 function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [userName, setFullName] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { signup, isLoading } = useSignup();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createUser(userName, email, password));
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-          data: {
-            full_name: userName,
-          },
-        },
-      });
-      if (error) throw error;
-      alert('Check you email for verificaiton link');
-      navigate('/home');
-    } catch (error) {
-      alert(error);
-    }
+    dispatch(createUser(fullName, email, password));
+    signup({ fullName, email, password });
   }
 
   return (
@@ -39,9 +27,10 @@ function SignUp() {
         <input
           className="w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           type="text"
-          placeholder="Fullname"
-          value={userName}
+          placeholder="Full name"
+          value={fullName}
           onChange={(e) => setFullName(e.target.value)}
+          disabled={isLoading}
         />
         <input
           className="w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0 "
@@ -49,6 +38,7 @@ function SignUp() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
         />
         <input
           className="mb-6 w-full rounded-sm px-4 py-2 focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
@@ -56,10 +46,11 @@ function SignUp() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
 
-        <Button type="login" onClick={handleSubmit}>
-          Sign up
+        <Button type="login" onClick={handleSubmit} disabled={isLoading}>
+          {!isLoading ? 'Sign up' : <SpinnerMini />}
         </Button>
       </div>
     </>
