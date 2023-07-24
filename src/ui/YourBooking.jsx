@@ -9,11 +9,14 @@ import {
 import Button from './Button';
 import { supabase } from '../../supabase';
 import { useDeleteBooking } from '../utils/useDeleteBooking';
+import SpinnerMini from './SpinnerMini';
+import ConfirmDelete from './ConfirmDelete';
 
 function YourBooking() {
   const [reservations, setReservations] = useState([]);
   const [error, setError] = useState(null);
   const { deleteBooking, isDeleting } = useDeleteBooking();
+  const [selectedReservation, setSelectedReservation] = useState(null);
 
   useEffect(() => {
     async function fetchReservations() {
@@ -75,13 +78,24 @@ function YourBooking() {
             </div>
             <Button
               type="continue"
-              onClick={() => deleteBooking(reservation.id)}
+              onClick={() => setSelectedReservation(reservation)}
+              disabled={isDeleting}
             >
-              Cancel
+              {!isDeleting ? 'Delete' : <SpinnerMini />}
             </Button>
           </div>
         ))}
       </div>
+      {selectedReservation && (
+        <ConfirmDelete
+          onConfirm={() => {
+            deleteBooking(selectedReservation.id);
+            setSelectedReservation(null);
+          }}
+          disabled={isDeleting}
+          onCloseModal={() => setSelectedReservation(null)}
+        />
+      )}
     </div>
   );
 }

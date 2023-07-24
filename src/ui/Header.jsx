@@ -2,6 +2,7 @@ import React from 'react';
 import Logout from './Logout';
 import User from './User';
 import { Outlet } from 'react-router-dom';
+import GoHome from './GoHome';
 
 function Header({ color }) {
   return (
@@ -12,6 +13,7 @@ function Header({ color }) {
         } lg:px-12 `}
       >
         <div className="flex items-center justify-between space-x-6 ">
+          <GoHome />
           <User />
           <Logout />
         </div>
