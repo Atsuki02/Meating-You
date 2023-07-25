@@ -1,34 +1,31 @@
 import React, { useState } from 'react';
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../supabase';
 import { useDispatch } from 'react-redux';
 import { createUser, loginUser, setToken } from '../features/user/userSlice';
 import { useLogin } from '../utils/useLogin';
 import SpinnerMini from './SpinnerMini';
 
 function Login({ setFormState }) {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('testtest@test.com');
+  const [password, setPassword] = useState('testtest');
   const { data, login, isLoading } = useLogin();
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
     if (!email || !password) return;
     login({ email, password });
 
+    dispatch(setToken(data));
+    dispatch(loginUser());
+
     if (data) {
       const userData = {
-        userName: data.user.user_metadata.full_name,
-        email: data.user.email,
+        userName: data?.user.user_metadata.full_name,
+        email: data?.user.email,
         password: password,
-        id: data.user.id,
+        id: data?.user.id,
       };
-      console.log(userData);
-      dispatch(setToken(data));
-      dispatch(loginUser());
       dispatch(createUser(userData));
     }
   }

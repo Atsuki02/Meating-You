@@ -3,8 +3,12 @@ import Logout from './Logout';
 import User from './User';
 import { Outlet } from 'react-router-dom';
 import GoHome from './GoHome';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from '../features/user/userSlice';
 
 function Header({ color }) {
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  console.log(isLoggedIn);
   return (
     <>
       <header
@@ -14,8 +18,7 @@ function Header({ color }) {
       >
         <div className="flex items-center justify-between space-x-6 ">
           <GoHome />
-          <User />
-          <Logout />
+          {isLoggedIn ? <Logout /> : <User />}
         </div>
       </header>
       <Outlet />

@@ -11,6 +11,8 @@ import { supabase } from '../../supabase';
 import { useDeleteBooking } from '../utils/useDeleteBooking';
 import SpinnerMini from './SpinnerMini';
 import ConfirmDelete from './ConfirmDelete';
+import { useQuery } from '@tanstack/react-query';
+import { fetchReservations } from '../utils/apiBooking';
 
 function YourBooking() {
   const [reservations, setReservations] = useState([]);

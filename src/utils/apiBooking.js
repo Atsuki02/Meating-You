@@ -1,5 +1,15 @@
 import { supabase } from '../../supabase';
 
+export async function fetchReservations() {
+  let { data, error } = await supabase.from('reservations').select('*');
+  //   .eq('user_id', userFormData.userData.id);
+  if (error) {
+    console.error(error);
+    throw new Error('Failed to fetch reservations.');
+  }
+  return data;
+}
+
 export async function deleteBooking(id) {
   const { data, error } = await supabase
     .from('reservations')
