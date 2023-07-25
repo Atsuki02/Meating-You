@@ -1,5 +1,14 @@
 import { supabase } from '../../supabase';
 
+export async function createBooking(formData) {
+  const { data, error } = await supabase.from('reservations').insert(formData);
+  if (error) {
+    console.error(error);
+    throw new Error('Failed to create reservations.');
+  }
+  return data;
+}
+
 export async function fetchReservations() {
   let { data, error } = await supabase.from('reservations').select('*');
   //   .eq('user_id', userFormData.userData.id);
@@ -18,7 +27,7 @@ export async function deleteBooking(id) {
 
   if (error) {
     console.error(error);
-    throw new Error('Booking could not be deleted');
+    throw new Error('Reservation could not be deleted');
   }
   return data;
 }

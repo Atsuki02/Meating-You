@@ -1,29 +1,19 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getFormData } from '../features/form/formSlice';
-import { supabase } from '../../supabase';
+import { useCreateBooking } from '../utils/useCreateBooking';
 import Button from './Button';
 import BackButton from './BackButton';
+import SpinnerMini from './SpinnerMini';
 
 const ConfirmationPage = () => {
   const formData = useSelector(getFormData);
   const navigate = useNavigate();
+  const { createBooking, isCreating } = useCreateBooking();
 
-  async function handleConfirm() {
-    try {
-      const { data, error } = await supabase
-        .from('reservations')
-        .insert(formData);
-      navigate('/reservationCompletePage');
-      if (error) {
-        console.error('Error occurred', error);
-      } else {
-        console.log('Succeeded', data);
-      }
-    } catch (error) {
-      console.error('Error occurred', error);
-    }
+  function handleConfirm() {
+    createBooking(formData);
+    navigate('/reservationCompletePage');
   }
 
   return (
@@ -74,8 +64,8 @@ const ConfirmationPage = () => {
           <span className=" pb-2">{formData.tableType}</span>
         </div>
 
-        <Button type="continue" onClick={handleConfirm}>
-          Confirm Booking
+        <Button type="continue" onClick={handleConfirm} disabled={isCreating}>
+          {!isCreating ? 'Confirm Booking' : <SpinnerMini />}
         </Button>
       </div>
     </div>
