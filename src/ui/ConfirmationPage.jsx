@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { getFormData } from '../features/form/formSlice';
 import { useCreateBooking } from '../utils/useCreateBooking';
 import Button from './Button';
@@ -8,13 +7,7 @@ import SpinnerMini from './SpinnerMini';
 
 const ConfirmationPage = () => {
   const formData = useSelector(getFormData);
-  const navigate = useNavigate();
   const { createBooking, isCreating } = useCreateBooking();
-
-  function handleConfirm() {
-    createBooking(formData);
-    navigate('/reservationCompletePage');
-  }
 
   return (
     <div className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 ">
@@ -24,11 +17,6 @@ const ConfirmationPage = () => {
           Check Your Details
         </h1>
 
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-3">
-          <span className="pb-2 font-semibold">Email Address:</span>
-          <span className=" pb-2">{formData.email}</span>
-        </div>
-
         <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
           <span className="pb-2 font-semibold">First Name:</span>
           <span className=" pb-2">{formData.firstName}</span>
@@ -37,6 +25,11 @@ const ConfirmationPage = () => {
         <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
           <span className="pb-2 font-semibold">Last Name:</span>
           <span className=" pb-2">{formData.lastName}</span>
+        </div>
+
+        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-3">
+          <span className="pb-2 font-semibold">Email Address:</span>
+          <span className=" pb-2">{formData.email}</span>
         </div>
 
         <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
@@ -64,7 +57,11 @@ const ConfirmationPage = () => {
           <span className=" pb-2">{formData.tableType}</span>
         </div>
 
-        <Button type="continue" onClick={handleConfirm} disabled={isCreating}>
+        <Button
+          type="continue"
+          onClick={() => createBooking(formData)}
+          disabled={isCreating}
+        >
           {!isCreating ? 'Confirm Booking' : <SpinnerMini />}
         </Button>
       </div>

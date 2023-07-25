@@ -16,9 +16,8 @@ function Login({ setFormState }) {
     if (!email || !password) return;
     login({ email, password });
 
-    dispatch(setToken(data));
+    // dispatch(setToken(data));
     dispatch(loginUser());
-    // dispatch(setUserId(data.user.id));
 
     if (data) {
       const userData = {

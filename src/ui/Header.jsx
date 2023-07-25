@@ -8,7 +8,7 @@ import { getIsLoggedIn } from '../features/user/userSlice';
 
 function Header({ color }) {
   const isLoggedIn = useSelector(getIsLoggedIn);
-  console.log(isLoggedIn);
+
   return (
     <>
       <header

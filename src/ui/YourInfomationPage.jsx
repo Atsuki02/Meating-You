@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import 'react-phone-input-2/lib/style.css';
-import PhoneInput from 'react-phone-input-2';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../features/form/formSlice';
+import 'react-phone-input-2/lib/style.css';
+import PhoneInput from 'react-phone-input-2';
 import Button from './Button';
 import TitlePagenation from './TitlePagenation';
 import BackButton from './BackButton';
@@ -44,17 +44,6 @@ function YourInformationPage() {
         <TitlePagenation title="Your infomation" page="3" />
 
         <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
-          <span className="pb-2 font-semibold">Email</span>
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
-          />
-        </div>
-
-        <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
           <span className="pb-2 font-semibold">First Name</span>
           <input
             type="text"
@@ -72,6 +61,17 @@ function YourInformationPage() {
             required
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
+          />
+        </div>
+
+        <div className="flex w-full flex-col items-start rounded-md border-2 border-slate-200 p-4">
+          <span className="pb-2 font-semibold">Email</span>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="h-10 w-full rounded-md text-black focus:border-2 focus:border-teal-600 focus:outline-none focus:ring-0"
           />
         </div>
