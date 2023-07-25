@@ -2,8 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { fetchReservations } from '../utils/apiBooking';
 import Spinner from './Spinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCalendar,
+  faClock,
+  faPerson,
+} from '@fortawesome/free-solid-svg-icons';
+import Button from './Button';
+import SpinnerMini from './SpinnerMini';
 
-function ReservationTable() {
+function ReservationTable({ setSelectedReservation, isDeleting }) {
   const {
     isLoading,
     data: reservations,
@@ -15,7 +23,52 @@ function ReservationTable() {
 
   if (isLoading) return <Spinner />;
 
-  return <div>ReservationTable</div>;
+  return (
+    <>
+      {reservations.map((reservation) => (
+        <div
+          key={reservation.id}
+          className="w-full border-2 border-slate-200 p-4 shadow-xl"
+        >
+          <img
+            src={reservation.tableImage}
+            alt={reservation.tableName}
+            className="h-44 w-80 lg:h-56 lg:w-96"
+          />
+          <div className="flex flex-col space-y-1 text-stone-500 lg:space-y-2">
+            <p className="pb-1 pt-4 text-lg font-bold text-black lg:text-2xl">
+              {reservation.tableName}
+            </p>
+            <p className="text-base lg:text-lg ">
+              <span className="pr-2">
+                <FontAwesomeIcon icon={faCalendar} />
+              </span>
+              {reservation.reservationDate}
+            </p>
+            <p className="text-base lg:text-lg">
+              <span className="pr-2">
+                <FontAwesomeIcon icon={faClock} />
+              </span>
+              {reservation.reservationTime}
+            </p>
+            <p className="pb-6 text-base lg:text-lg">
+              <span className="pr-2">
+                <FontAwesomeIcon icon={faPerson} />
+              </span>
+              {reservation.numberOfPeople} guests
+            </p>
+          </div>
+          <Button
+            type="continue"
+            onClick={() => setSelectedReservation(reservation)}
+            disabled={isDeleting}
+          >
+            {!isDeleting ? 'Delete' : <SpinnerMini />}
+          </Button>
+        </div>
+      ))}
+    </>
+  );
 }
 
 export default ReservationTable;
