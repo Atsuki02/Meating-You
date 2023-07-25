@@ -9,9 +9,11 @@ export async function createBooking(formData) {
   return data;
 }
 
-export async function fetchReservations() {
-  let { data, error } = await supabase.from('reservations').select('*');
-  //   .eq('user_id', userFormData.userData.id);
+export async function fetchReservations(userId) {
+  let { data, error } = await supabase
+    .from('reservations')
+    .select('*')
+    .eq('userId', userId);
   if (error) {
     console.error(error);
     throw new Error('Failed to fetch reservations.');

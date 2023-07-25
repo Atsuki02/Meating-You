@@ -10,16 +10,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Button from './Button';
 import SpinnerMini from './SpinnerMini';
+import { useSelector } from 'react-redux';
+import { getFormData } from '../features/form/formSlice';
 
 function ReservationTable({ setSelectedReservation, isDeleting }) {
+  const userId = useSelector(getFormData).userId;
   const {
     isLoading,
     data: reservations,
     error,
-  } = useQuery({
-    queryKey: ['reservations'],
-    queryFn: fetchReservations,
-  });
+  } = useQuery(['reservations'], () => fetchReservations(userId));
 
   if (isLoading) return <Spinner />;
 

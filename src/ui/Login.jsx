@@ -11,13 +11,14 @@ function Login({ setFormState }) {
   const [password, setPassword] = useState('testtest');
   const { data, login, isLoading } = useLogin();
 
-  async function handleLogin(e) {
+  function handleLogin(e) {
     e.preventDefault();
     if (!email || !password) return;
     login({ email, password });
 
     dispatch(setToken(data));
     dispatch(loginUser());
+    // dispatch(setUserId(data.user.id));
 
     if (data) {
       const userData = {

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   formData: {
+    userId: null,
     firstName: '',
     lastName: '',
     email: '',
@@ -18,6 +19,9 @@ const formSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
+    setUserId(state, action) {
+      state.formData.userId = action.payload;
+    },
     setReservationData(state, action) {
       state.formData.reservationDate = action.payload.reservationDate;
       state.formData.reservationTime = action.payload.reservationTime;
@@ -41,8 +45,13 @@ const formSlice = createSlice({
   },
 });
 
-export const { setReservationData, setTableType, setUserData, clearFormData } =
-  formSlice.actions;
+export const {
+  setUserId,
+  setReservationData,
+  setTableType,
+  setUserData,
+  clearFormData,
+} = formSlice.actions;
 
 export const getFormData = (state) => state.form.formData;
 
