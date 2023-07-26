@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDeleteBooking } from '../bookings/useDeleteBooking';
-import BackButton from '../../ui/BackButton';
-import ConfirmDelete from '../bookings/ConfirmDelete';
-import ReservationTable from '../bookings/ReservationTable';
+import { useDeleteBooking } from '../features/bookings/useDeleteBooking';
+import BackButton from '../ui/BackButton';
+import ConfirmDelete from '../features/bookings/ConfirmDelete';
+import ReservationTable from '../features/bookings/ReservationTable';
 
 function YourBooking() {
   const { deleteBooking, isDeleting } = useDeleteBooking();

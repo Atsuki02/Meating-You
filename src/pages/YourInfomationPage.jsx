@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setUserData } from '../form/formSlice';
+import { setUserData } from '../features/form/formSlice';
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
-import Button from '../../ui/Button';
-import TitlePagenation from '../../ui/TitlePagenation';
-import BackButton from '../../ui/BackButton';
+import Button from '../ui/Button';
+import TitlePagenation from '../ui/TitlePagenation';
+import BackButton from '../ui/BackButton';
 import { toast } from 'react-hot-toast';
-import Input from '../form/Input';
+import Input from '../features/form/Input';
 
 function YourInformationPage() {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { getFormData } from '../form/formSlice';
-import { useCreateBooking } from '../bookings/useCreateBooking';
-import Button from '../../ui/Button';
-import BackButton from '../../ui/BackButton';
-import SpinnerMini from '../../ui/SpinnerMini';
-import DataItem from '../form/DataItem';
+import { getFormData } from '../features/form/formSlice';
+import { useCreateBooking } from '../features/bookings/useCreateBooking';
+import Button from '../ui/Button';
+import BackButton from '../ui/BackButton';
+import SpinnerMini from '../ui/SpinnerMini';
+import DataItem from '../features/form/DataItem';
 
 const ConfirmationPage = () => {
   const formData = useSelector(getFormData);

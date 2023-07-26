@@ -2,17 +2,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Auth from './features/pages/Auth';
-import Home from './features/pages/Home';
-import YourInformationPage from './features/pages/YourInfomationPage';
-import ConfirmationPage from './features/pages/ConfirmationPage';
-import ReservationCompletePage from './features/pages/ReservationCompletePage';
-import Header from './features/pages/Header';
-import Booking from './features/pages/Booking';
+import Auth from './pages/Auth';
+import Home from './pages/Home';
+import YourInformationPage from './pages/YourInfomationPage';
+import ConfirmationPage from './pages/ConfirmationPage';
+import ReservationCompletePage from './pages/ReservationCompletePage';
+import Header from './pages/Header';
+import Booking from './pages/Booking';
 import Table from './features/form/Table';
-import YourBooking from './features/pages/YourBooking';
+import YourBooking from './pages/YourBooking';
 import ProtectedRoute from './features/authentication/ProtectedRoute';
-import PageNotFound from './features/pages/PageNotFound';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   const queryClient = new QueryClient();

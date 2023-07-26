@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setReservationData } from '../form/formSlice';
+import { setReservationData } from '../features/form/formSlice';
 import Datepicker from 'react-tailwindcss-datepicker';
-import Button from '../../ui/Button';
-import TitlePagenation from '../../ui/TitlePagenation';
-import BackButton from '../../ui/BackButton';
+import Button from '../ui/Button';
+import TitlePagenation from '../ui/TitlePagenation';
+import BackButton from '../ui/BackButton';
 import { toast } from 'react-hot-toast';
 
 // prettier-ignore

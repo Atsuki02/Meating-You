@@ -1,9 +1,9 @@
 import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
-import BackButton from '../../ui/BackButton';
-import Button from '../../ui/Button';
+import BackButton from '../ui/BackButton';
 import Header from './Header';
+import Button from '../ui/Button';
 
 const ReservationCompletePage = () => {
   const navigate = useNavigate();

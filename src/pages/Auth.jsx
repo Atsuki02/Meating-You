@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Login from '../authentication/Login';
-import SignUp from '../authentication/SignUp';
-import BackButton from '../../ui/BackButton';
+import Login from '../features/authentication/Login';
+import SignUp from '../features/authentication/SignUp';
+import BackButton from '../ui/BackButton';
 
 function Auth() {
   const [formState, setFormState] = useState(true);
