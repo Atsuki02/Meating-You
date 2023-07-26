@@ -44,12 +44,12 @@ function Table() {
       className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14"
     >
       <BackButton />
-      <div className="flex w-full flex-col items-center justify-center space-y-10 lg:mx-auto lg:w-2/3 lg:space-y-6 lg:p-0">
+      <div className="flex w-full flex-col items-center justify-center space-y-6 lg:mx-auto lg:w-2/3 lg:space-y-6 lg:p-0">
         <TitlePagenation title="Table Type Selection" page="2" />
         <div className="flex w-full overflow-x-scroll border-slate-200">
           {tableOptions.map((table) => (
             <div
-              className={`flex w-[80%] flex-shrink-0 flex-col justify-around space-y-6 border-[2px] border-slate-200 px-6 py-4 lg:space-y-8 lg:px-10 lg:py-14 ${
+              className={`flex w-[80%] flex-shrink-0 flex-col justify-around space-y-4 border-[2px] border-slate-200 p-4 lg:space-y-8 lg:px-10 lg:py-14 ${
                 selectedTable.id === table.id
                   ? 'border-[4px] border-teal-700'
                   : ''
