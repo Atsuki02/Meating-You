@@ -4,8 +4,8 @@ import Button from '../../ui/Button';
 import SpinnerMini from '../../ui/SpinnerMini';
 
 function Login({ setFormState }) {
-  const [email, setEmail] = useState('testtest@test.com');
-  const [password, setPassword] = useState('testtest');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { login, isLoading } = useLogin();
 
   const handleLogin = (e) => {
