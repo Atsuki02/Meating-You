@@ -8,7 +8,7 @@ export default {
   ],
   theme: {
     fontFamily: {
-      sans: 'Cardo',
+      sans: 'Roboto Mono, monospace',
     },
 
     extend: {
@@ -27,7 +27,7 @@ export default {
         'custom-background': 'linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))',
       },
       fontFamily: {
-        main: 'Cardo',
+        main: ['Playfair Display', 'sans-serif'],
       },
     },
   },

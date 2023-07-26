@@ -1,4 +1,4 @@
-import { supabase } from '../../supabase';
+import { supabase } from '../../../supabase';
 
 export async function createBooking(formData) {
   const { data, error } = await supabase.from('reservations').insert(formData);

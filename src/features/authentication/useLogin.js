@@ -3,7 +3,7 @@ import { login as loginApi } from './apiAuth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { loginUser, setUserId } from '../features/form/formSlice';
+import { loginUser, setUserId } from '../form/formSlice';
 
 export function useLogin() {
   const queryClient = useQueryClient();

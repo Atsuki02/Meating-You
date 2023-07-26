@@ -2,17 +2,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Auth from './ui/Auth';
-import Home from './ui/Home';
-import Error from './ui/Error';
-import YourInformationPage from './ui/YourInfomationPage';
-import ConfirmationPage from './ui/ConfirmationPage';
-import ReservationCompletePage from './ui/ReservationCompletePage';
-import Header from './ui/Header';
-import Booking from './ui/Booking';
-import Table from './ui/Table';
-import YourBooking from './ui/YourBooking';
-import ProtectedRoute from './ui/ProtectedRoute';
+import Auth from './features/pages/Auth';
+import Home from './features/pages/Home';
+import YourInformationPage from './features/pages/YourInfomationPage';
+import ConfirmationPage from './features/pages/ConfirmationPage';
+import ReservationCompletePage from './features/pages/ReservationCompletePage';
+import Header from './features/pages/Header';
+import Booking from './features/pages/Booking';
+import Table from './features/form/Table';
+import YourBooking from './features/pages/YourBooking';
+import ProtectedRoute from './features/authentication/ProtectedRoute';
+import PageNotFound from './features/pages/PageNotFound';
 
 function App() {
   const queryClient = new QueryClient();
@@ -45,7 +45,7 @@ function App() {
             element={<ReservationCompletePage />}
           />
           <Route path="auth" element={<Auth />} />
-          <Route path="*" element={<Error />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}

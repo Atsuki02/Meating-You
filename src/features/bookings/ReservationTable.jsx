@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchReservations } from '../utils/apiBooking';
+import { fetchReservations } from './apiBooking';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
-import { getFormData } from '../features/form/formSlice';
+import { getFormData } from '../form/formSlice';
 // prettier-ignore
 import { faCalendar, faClock, faPerson } from '@fortawesome/free-solid-svg-icons';
-import Spinner from './Spinner';
-import Button from './Button';
-import SpinnerMini from './SpinnerMini';
+import Spinner from '../../ui/Spinner';
+import Button from '../../ui/Button';
+import SpinnerMini from '../../ui/SpinnerMini';
 
 function ReservationTable({ setSelectedReservation, isDeleting }) {
-  const userId = useSelector(getFormData).userId;
+  const userId = useSelector((state) => getFormData(state).userId);
   const { isLoading, data: reservations } = useQuery(['reservations'], () =>
     fetchReservations(userId)
   );

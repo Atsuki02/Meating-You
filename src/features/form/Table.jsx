@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setTableType } from '../features/form/formSlice';
-import Button from './Button';
-import TitlePagenation from './TitlePagenation';
-import BackButton from './BackButton';
+import { setTableType } from './formSlice';
+import Button from '../../ui/Button';
+import TitlePagenation from '../../ui/TitlePagenation';
+import BackButton from '../../ui/BackButton';
 
 function Table() {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ function Table() {
   return (
     <form
       onSubmit={handleNextPage}
-      className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 "
+      className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14"
     >
       <BackButton />
       <div className="flex w-full flex-col items-center justify-center space-y-10 lg:mx-auto lg:w-2/3 lg:space-y-6 lg:p-0">
@@ -51,7 +51,7 @@ function Table() {
             <div
               className={`flex w-[80%] flex-shrink-0 flex-col justify-around space-y-6 border-[2px] border-slate-200 px-6 py-4 lg:space-y-8 lg:px-10 lg:py-14 ${
                 selectedTable.id === table.id
-                  ? 'border-[4px] border-teal-700 '
+                  ? 'border-[4px] border-teal-700'
                   : ''
               }`}
               key={table.id}
@@ -63,13 +63,13 @@ function Table() {
               <img
                 src={table.imageUrl}
                 alt={table.name}
-                className="m-1 cursor-pointer rounded-md p-2 "
+                className="m-1 cursor-pointer rounded-md p-2"
               />
             </div>
           ))}
         </div>
-        <span className=" text-center">
-          {Array.from({ length: tableOptions.length }, (_, i) => (
+        <span className="text-center">
+          {tableOptions.map((_, i) => (
             <span
               key={i}
               className={`text-xl ${

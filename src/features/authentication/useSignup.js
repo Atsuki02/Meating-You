@@ -3,7 +3,7 @@ import { signup as signupApi } from './apiAuth';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginUser, setUserId } from '../features/form/formSlice';
+import { loginUser, setUserId } from '../form/formSlice';
 
 export function useSignup() {
   const queryClient = useQueryClient();

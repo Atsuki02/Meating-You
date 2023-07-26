@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setReservationData } from '../features/form/formSlice';
+import { setReservationData } from '../form/formSlice';
 import Datepicker from 'react-tailwindcss-datepicker';
-import Button from './Button';
-import TitlePagenation from './TitlePagenation';
-import BackButton from './BackButton';
+import Button from '../../ui/Button';
+import TitlePagenation from '../../ui/TitlePagenation';
+import BackButton from '../../ui/BackButton';
 import { toast } from 'react-hot-toast';
+
+// prettier-ignore
+const timeOptions = [
+  '17:30', '18:00', '18:30', '19:00', '19:30',
+  '20:00', '20:30', '21:00', '21:30'
+];
 
 function Booking() {
   const dispatch = useDispatch();
@@ -17,9 +23,6 @@ function Booking() {
   });
   const [selectedTime, setSelectedTime] = useState('17:30');
   const [numberOfPeople, setNumberOfPeople] = useState(0);
-
-  // prettier-ignore
-  const timeOptions = ['17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30'];
 
   function handleNextPage(e) {
     e.preventDefault();

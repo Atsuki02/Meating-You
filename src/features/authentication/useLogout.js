@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { logout as logoutApi } from './apiAuth';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../features/form/formSlice';
+import { logoutUser } from '../form/formSlice';
 import { toast } from 'react-hot-toast';
 
 export function useLogout() {
