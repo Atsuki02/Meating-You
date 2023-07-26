@@ -18,7 +18,7 @@ function TitlePagenation({ title, page }) {
   }
 
   return (
-    <h1 className="relative mb-6 pb-6 pt-10 text-2xl font-bold lg:pb-10 lg:text-3xl">
+    <h1 className="relative mb-10 mt-20 pb-6 text-2xl font-bold lg:pb-10 lg:text-3xl">
       {title}
       <span className="absolute bottom-0 left-0 h-2 w-full bg-slate-100"></span>
       <span
