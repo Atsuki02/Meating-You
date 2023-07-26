@@ -49,7 +49,7 @@ function Table() {
         <div className="flex w-full overflow-x-scroll border-slate-200">
           {tableOptions.map((table) => (
             <div
-              className={`flex w-[80%] flex-shrink-0 flex-col justify-around space-y-4 border-[2px] border-slate-200 p-4 lg:space-y-8 lg:px-10 lg:py-14 ${
+              className={`flex w-[75%] flex-shrink-0 flex-col justify-around space-y-3 border-[2px] border-slate-200 p-4 lg:space-y-8 lg:px-10 lg:py-14 ${
                 selectedTable.id === table.id
                   ? 'border-[4px] border-teal-700'
                   : ''
