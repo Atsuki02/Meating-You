@@ -22,7 +22,7 @@ function Booking() {
     endDate: null,
   });
   const [selectedTime, setSelectedTime] = useState('17:30');
-  const [numberOfPeople, setNumberOfPeople] = useState(0);
+  const [numberOfPeople, setNumberOfPeople] = useState('');
 
   function handleNextPage(e) {
     e.preventDefault();

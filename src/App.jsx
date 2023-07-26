@@ -13,6 +13,7 @@ import Table from './pages/Table';
 import YourBooking from './pages/YourBooking';
 import ProtectedRoute from './features/authentication/ProtectedRoute';
 import PageNotFound from './pages/PageNotFound';
+import ScrollToTop from './ui/ScrollToTop';
 
 function App() {
   const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route index element={<Navigate replace to="home" />} />
           <Route path="home" element={<Home />} />
