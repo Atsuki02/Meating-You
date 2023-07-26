@@ -17,7 +17,7 @@ const ReservationCompletePage = () => {
         <div className="pb-8 text-8xl">
           <FontAwesomeIcon icon={faChampagneGlasses} />
         </div>
-        <p className="pb-8 text-center text-2xl font-bold lg:pb-8">
+        <p className="pb-32 text-center text-2xl font-bold lg:pb-8">
           Your reservation
           <br />
           is confirmed!

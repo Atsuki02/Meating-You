@@ -9,7 +9,7 @@ import ConfirmationPage from './pages/ConfirmationPage';
 import ReservationCompletePage from './pages/ReservationCompletePage';
 import Header from './pages/Header';
 import Booking from './pages/Booking';
-import Table from './features/form/Table';
+import Table from './pages/Table';
 import YourBooking from './pages/YourBooking';
 import ProtectedRoute from './features/authentication/ProtectedRoute';
 import PageNotFound from './pages/PageNotFound';

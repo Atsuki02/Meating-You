@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setTableType } from './formSlice';
-import Button from '../../ui/Button';
-import TitlePagenation from '../../ui/TitlePagenation';
-import BackButton from '../../ui/BackButton';
+import { setTableType } from '../features/form/formSlice';
+import Button from '../ui/Button';
+import TitlePagenation from '../ui/TitlePagenation';
+import BackButton from '../ui/BackButton';
 
 function Table() {
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ function Table() {
           {tableOptions.map((_, i) => (
             <span
               key={i}
-              className={`text-xl ${
+              className={`text-3xl ${
                 i === selectedTable.id - 1 ? 'text-teal-600' : 'text-gray-400'
               }`}
             >
