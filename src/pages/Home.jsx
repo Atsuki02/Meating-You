@@ -13,7 +13,7 @@ function Home() {
           Savor Exquisite Dining Experiences
           <br className="hidden md:block md:py-1" /> in Our Venue
         </h1>
-        <p className="pb-10 text-base italic md:absolute  md:text-lg ">
+        <p className="pb-6 text-base italic md:absolute  md:text-lg ">
           Reserve Your Spot for Memorable Food Adventures Today
         </p>
         <Link to="/booking">

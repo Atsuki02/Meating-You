@@ -40,7 +40,7 @@ function YourInformationPage() {
       className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 "
     >
       <BackButton />
-      <div className="mt-10 flex w-full flex-col items-center justify-center space-y-6 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
+      <div className="mt-10 flex w-full flex-col items-center justify-center space-y-3 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
         <TitlePagenation title="Your Information" page="3" />
 
         <Input

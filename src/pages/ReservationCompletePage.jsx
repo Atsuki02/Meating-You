@@ -13,11 +13,13 @@ const ReservationCompletePage = () => {
       <Header color="text-white" />
       <BackButton color="text-white" />
       <div className="relative flex flex-col items-center justify-center space-y-4 p-4 lg:mx-auto lg:w-1/2 lg:space-y-6 lg:p-0">
-        <h1 className="pb-8 text-4xl font-bold lg:pb-8 lg:text-5xl">Hooray!</h1>
-        <div className="pb-8 text-8xl">
+        <h1 className="pb-20 text-4xl font-bold lg:pb-8 lg:text-5xl">
+          Hooray!
+        </h1>
+        <div className="pb-16 text-8xl">
           <FontAwesomeIcon icon={faChampagneGlasses} />
         </div>
-        <p className="pb-32 text-center text-2xl font-bold lg:pb-8">
+        <p className="pb-20 text-center text-2xl font-bold lg:pb-8">
           Your reservation
           <br />
           is confirmed!
