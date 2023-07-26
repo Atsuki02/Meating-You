@@ -1,10 +1,10 @@
+import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from '../features/form/formSlice';
 import React from 'react';
 import Logout from './Logout';
 import User from './User';
-import { Outlet } from 'react-router-dom';
 import GoHome from './GoHome';
-import { useSelector } from 'react-redux';
-import { getIsLoggedIn } from '../features/user/userSlice';
 
 function Header({ color }) {
   const isLoggedIn = useSelector(getIsLoggedIn);

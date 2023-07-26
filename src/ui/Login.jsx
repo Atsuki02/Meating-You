@@ -1,34 +1,13 @@
-import React, { useState } from 'react';
-import Button from './Button';
-import { useDispatch } from 'react-redux';
-import { createUser, loginUser, setToken } from '../features/user/userSlice';
+import { useState } from 'react';
 import { useLogin } from '../utils/useLogin';
+import Button from './Button';
 import SpinnerMini from './SpinnerMini';
 
 function Login({ setFormState }) {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState('testtest@test.com');
   const [password, setPassword] = useState('testtest');
-  const { data, login, isLoading } = useLogin();
+  const { login, isLoading } = useLogin();
 
-  function handleLogin(e) {
-    e.preventDefault();
-    if (!email || !password) return;
-    login({ email, password });
-
-    // dispatch(setToken(data));
-    dispatch(loginUser());
-
-    if (data) {
-      const userData = {
-        userName: data?.user.user_metadata.full_name,
-        email: data?.user.email,
-        password: password,
-        id: data?.user.id,
-      };
-      dispatch(createUser(userData));
-    }
-  }
   return (
     <>
       <div className="mt-6 flex flex-col items-center justify-center space-y-6 lg:mt-6">
@@ -48,7 +27,14 @@ function Login({ setFormState }) {
           onChange={(e) => setPassword(e.target.value)}
           disabled={isLoading}
         />
-        <Button type="login" onClick={handleLogin} disabled={isLoading}>
+        <Button
+          type="login"
+          onClick={(e) => {
+            e.preventDefault();
+            login({ email, password });
+          }}
+          disabled={isLoading}
+        >
           {!isLoading ? 'Login' : <SpinnerMini />}
         </Button>
       </div>

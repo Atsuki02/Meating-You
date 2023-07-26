@@ -3,7 +3,7 @@ import { login as loginApi } from './apiAuth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { setUserId } from '../features/form/formSlice';
+import { loginUser, setUserId } from '../features/form/formSlice';
 
 export function useLogin() {
   const queryClient = useQueryClient();
@@ -15,6 +15,7 @@ export function useLogin() {
     onSuccess: (user) => {
       queryClient.setQueryData(['user'], user.user);
       dispatch(setUserId(user.user.id));
+      dispatch(loginUser());
       navigate('/yourbooking', { replace: true });
       toast.success('You are successfully logged in');
     },

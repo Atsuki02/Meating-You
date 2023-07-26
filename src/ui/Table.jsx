@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Button from './Button';
-import TitlePagenation from './TitlePagenation';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setTableType } from '../features/form/formSlice';
+import Button from './Button';
+import TitlePagenation from './TitlePagenation';
 import BackButton from './BackButton';
 
 function Table() {
@@ -28,17 +28,12 @@ function Table() {
   ];
   const [selectedTable, setSelectedTable] = useState(tableOptions[0]);
 
-  const handleTableSelection = (table) => {
-    setSelectedTable(table);
-  };
-
   function handleNextPage(e) {
     e.preventDefault();
     const tableData = {
       tableType: selectedTable.name,
       tableImage: selectedTable.imageUrl,
     };
-
     dispatch(setTableType(tableData));
     navigate('/yourInformationPage');
   }
@@ -60,7 +55,7 @@ function Table() {
                   : ''
               }`}
               key={table.id}
-              onClick={() => handleTableSelection(table)}
+              onClick={() => setSelectedTable(table)}
             >
               <span className="text-base font-bold italic lg:text-2xl">
                 {table.name}

@@ -13,6 +13,7 @@ const initialState = {
     tableType: '',
     tableImage: '',
   },
+  isLoggedIn: false,
 };
 
 const formSlice = createSlice({
@@ -42,6 +43,14 @@ const formSlice = createSlice({
         ...initialState,
       };
     },
+    loginUser(state) {
+      state.isLoggedIn = true;
+    },
+    logoutUser(state) {
+      return {
+        ...initialState,
+      };
+    },
   },
 });
 
@@ -51,8 +60,11 @@ export const {
   setTableType,
   setUserData,
   clearFormData,
+  loginUser,
+  logoutUser,
 } = formSlice.actions;
 
 export const getFormData = (state) => state.form.formData;
+export const getIsLoggedIn = (state) => state.form.isLoggedIn;
 
 export default formSlice.reducer;

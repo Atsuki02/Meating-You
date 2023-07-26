@@ -7,21 +7,20 @@ import PhoneInput from 'react-phone-input-2';
 import Button from './Button';
 import TitlePagenation from './TitlePagenation';
 import BackButton from './BackButton';
+import { toast } from 'react-hot-toast';
 
 function YourInformationPage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   function handleNextPage(e) {
     e.preventDefault();
-
     if (!phoneNumber) {
-      alert('Please put your phone number.');
+      toast('Please put your phone number.');
       return;
     }
     const userData = {

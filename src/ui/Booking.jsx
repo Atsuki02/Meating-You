@@ -1,50 +1,35 @@
 import { useState } from 'react';
-import Datepicker from 'react-tailwindcss-datepicker';
-import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setReservationData } from '../features/form/formSlice';
+import Datepicker from 'react-tailwindcss-datepicker';
+import Button from './Button';
 import TitlePagenation from './TitlePagenation';
 import BackButton from './BackButton';
+import { toast } from 'react-hot-toast';
 
 function Booking() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [date, setDate] = useState({
     startDate: null,
     endDate: null,
   });
-
   const [selectedTime, setSelectedTime] = useState('17:30');
-
-  const timeOptions = [
-    '17:30',
-    '18:00',
-    '18:30',
-    '19:00',
-    '19:30',
-    '20:00',
-    '20:30',
-    '21:00',
-    '21:30',
-  ];
-
-  const handleTimeSelection = (time) => {
-    setSelectedTime(time);
-  };
-
-  const handleValueChange = (newDate) => {
-    setDate(newDate);
-  };
-
   const [numberOfPeople, setNumberOfPeople] = useState(0);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // prettier-ignore
+  const timeOptions = ['17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30'];
 
   function handleNextPage(e) {
     e.preventDefault();
 
     if (!date.startDate) {
-      alert('Please select a date.');
+      toast.error('Please select a date.');
+      return;
+    }
+    if (!numberOfPeople) {
+      toast.error('Number of guests must be greater than 0.');
       return;
     }
 
@@ -72,7 +57,7 @@ function Booking() {
             primaryColor={'teal'}
             asSingle={true}
             value={date}
-            onChange={handleValueChange}
+            onChange={(date) => setDate(date)}
             useRange={false}
             readOnly={true}
             popoverDirection="down"
@@ -88,7 +73,7 @@ function Booking() {
                 className={`m-1 cursor-pointer rounded-md border-[1px] border-slate-200 p-2 ${
                   selectedTime === time ? 'bg-teal-600 text-white' : ''
                 }`}
-                onClick={() => handleTimeSelection(time)}
+                onClick={() => setSelectedTime(time)}
               >
                 {time}
               </div>

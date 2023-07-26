@@ -1,25 +1,13 @@
-import React, { useState } from 'react';
-import Button from './Button';
-import { useDispatch } from 'react-redux';
-import { createUser } from '../features/user/userSlice';
-import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../supabase';
+import { useState } from 'react';
 import { useSignup } from '../utils/useSignup';
+import Button from './Button';
 import SpinnerMini from './SpinnerMini';
 
 function SignUp() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup, isLoading } = useSignup();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(createUser(fullName, email, password));
-    signup({ fullName, email, password });
-  }
 
   return (
     <>
@@ -49,7 +37,14 @@ function SignUp() {
           disabled={isLoading}
         />
 
-        <Button type="login" onClick={handleSubmit} disabled={isLoading}>
+        <Button
+          type="login"
+          onClick={(e) => {
+            e.preventDefault();
+            signup({ fullName, email, password });
+          }}
+          disabled={isLoading}
+        >
           {!isLoading ? 'Sign up' : <SpinnerMini />}
         </Button>
       </div>

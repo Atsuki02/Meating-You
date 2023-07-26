@@ -8,7 +8,6 @@ function ConfirmDelete({ onConfirm, disabled, onCloseModal }) {
           Are you sure you want to delete this reservation? This action cannot
           be undone.
         </p>
-
         <div className="flex justify-end gap-3">
           <Button type="home" disabled={disabled} onClick={onCloseModal}>
             Cancel

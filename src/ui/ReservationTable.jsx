@@ -1,25 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 import { fetchReservations } from '../utils/apiBooking';
-import Spinner from './Spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCalendar,
-  faClock,
-  faPerson,
-} from '@fortawesome/free-solid-svg-icons';
-import Button from './Button';
-import SpinnerMini from './SpinnerMini';
 import { useSelector } from 'react-redux';
 import { getFormData } from '../features/form/formSlice';
+// prettier-ignore
+import { faCalendar, faClock, faPerson } from '@fortawesome/free-solid-svg-icons';
+import Spinner from './Spinner';
+import Button from './Button';
+import SpinnerMini from './SpinnerMini';
 
 function ReservationTable({ setSelectedReservation, isDeleting }) {
   const userId = useSelector(getFormData).userId;
-  const {
-    isLoading,
-    data: reservations,
-    error,
-  } = useQuery(['reservations'], () => fetchReservations(userId));
+  const { isLoading, data: reservations } = useQuery(['reservations'], () =>
+    fetchReservations(userId)
+  );
 
   if (isLoading) return <Spinner />;
 

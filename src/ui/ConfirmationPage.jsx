@@ -4,6 +4,7 @@ import { useCreateBooking } from '../utils/useCreateBooking';
 import Button from './Button';
 import BackButton from './BackButton';
 import SpinnerMini from './SpinnerMini';
+import DataItem from './DataItem';
 
 const ConfirmationPage = () => {
   const formData = useSelector(getFormData);
@@ -17,45 +18,14 @@ const ConfirmationPage = () => {
           Check Your Details
         </h1>
 
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">First Name:</span>
-          <span className=" pb-2">{formData.firstName}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">Last Name:</span>
-          <span className=" pb-2">{formData.lastName}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-3">
-          <span className="pb-2 font-semibold">Email Address:</span>
-          <span className=" pb-2">{formData.email}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">Phone Number:</span>
-          <span className=" pb-2">{formData.phoneNumber}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">Reservation Date:</span>
-          <span className=" pb-2">{formData.reservationDate}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">Reservation Time:</span>
-          <span className=" pb-2">{formData.reservationTime}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700 pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">Number of People:</span>
-          <span className=" pb-2">{formData.numberOfPeople}</span>
-        </div>
-
-        <div className="flex w-full flex-col items-start border-b-[1px] border-teal-700   pb-2 lg:flex-row lg:space-x-6">
-          <span className="pb-2 font-semibold">Table type:</span>
-          <span className=" pb-2">{formData.tableType}</span>
-        </div>
+        <DataItem label="First Name" value={formData.firstName} />
+        <DataItem label="Last Name" value={formData.lastName} />
+        <DataItem label="Email Address" value={formData.email} />
+        <DataItem label="Phone Number" value={formData.phoneNumber} />
+        <DataItem label="Reservation Date" value={formData.reservationDate} />
+        <DataItem label="Reservation Time" value={formData.reservationTime} />
+        <DataItem label="Number of People" value={formData.numberOfPeople} />
+        <DataItem label="Table type" value={formData.tableType} />
 
         <Button
           type="continue"

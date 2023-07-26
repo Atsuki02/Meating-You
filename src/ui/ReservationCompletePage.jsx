@@ -1,16 +1,12 @@
 import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import Header from './Header';
 import BackButton from './BackButton';
-import { useNavigate } from 'react-router-dom';
 
 const ReservationCompletePage = () => {
   const navigate = useNavigate();
-
-  function handleNavigate() {
-    navigate('/yourbooking');
-  }
 
   return (
     <div className="relative flex h-screen w-screen items-center justify-center bg-teal-700 text-white">
@@ -32,7 +28,7 @@ const ReservationCompletePage = () => {
           <Button type="home" onClick={() => navigate('/home')}>
             Go to homepage
           </Button>
-          <Button type="booking" onClick={() => handleNavigate()}>
+          <Button type="booking" onClick={() => navigate('/yourbooking')}>
             My bookings
           </Button>
         </div>
