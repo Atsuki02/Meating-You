@@ -13,9 +13,7 @@ export function useSignup() {
     mutationFn: signupApi,
     onSuccess: (user) => {
       queryClient.setQueryData(['user'], user.user);
-      toast.success(
-        "Account successfully created! Please verify the new account from the user's email address"
-      );
+      toast.success('Account successfully created!');
       dispatch(setUserId(user.user.id));
       dispatch(loginUser());
       navigate('/home', { replace: true });
