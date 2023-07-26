@@ -41,12 +41,12 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="auth" element={<Auth />} />
           </Route>
           <Route
             path="reservationCompletePage"
             element={<ReservationCompletePage />}
           />
-          <Route path="auth" element={<Auth />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
