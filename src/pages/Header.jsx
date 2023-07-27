@@ -12,7 +12,7 @@ function Header({ color }) {
   return (
     <>
       <header
-        className={`lg:text:lg absolute left-0 top-0 z-30 flex h-20 w-full items-center justify-end bg-transparent p-4 text-xl font-bold ${
+        className={`lg:text:lg absolute right-4 top-0 z-30 flex h-20 w-full items-center justify-end bg-transparent p-4 text-xl font-bold ${
           color ? color : 'text-teal-700'
         } lg:px-12 `}
       >
