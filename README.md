@@ -46,10 +46,6 @@ To tackle this issue, I employed the `useEffect` hook in React. By leveraging `u
 
 # Issue 
 
-## React Query Devtools
-
-While attempting to integrate the React Query devtools into the application, I encountered an error indicating a missing "./build/lib/devtools" specifier in the "@tanstack/react-query-devtools" package. Despite installing the package using the "npm i @tanstack/react-query-devtools" command, the issue persists.
-
 ## Enhancing User Experience: Access to Booking History
 
 In order to enhance the user experience, I have a vision to grant access to the booking history page for all users, even those who are not logged in. However, I intend to restrict the visibility of reservations for non-logged-in users to only the most recent booking they have made. This way, they can still view the details of their latest reservation.
