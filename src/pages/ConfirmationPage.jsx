@@ -1,14 +1,26 @@
-import { useSelector } from 'react-redux';
-import { getFormData } from '../features/form/formSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFormData, setUserId } from '../features/form/formSlice';
 import { useCreateBooking } from '../features/bookings/useCreateBooking';
 import Button from '../ui/Button';
 import BackButton from '../ui/BackButton';
 import SpinnerMini from '../ui/SpinnerMini';
 import DataItem from '../features/form/DataItem';
+import { useUser } from '../features/authentication/useUser';
+import { useEffect } from 'react';
+
+const randomNumber = Math.floor(Math.random() * 999999999);
 
 const ConfirmationPage = () => {
   const formData = useSelector(getFormData);
   const { createBooking, isCreating } = useCreateBooking();
+  const { isAuthenticated } = useUser();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      dispatch(setUserId(randomNumber));
+    }
+  }, [isAuthenticated, dispatch]);
 
   return (
     <div className="flex min-h-screen w-screen items-center justify-center bg-white px-4 py-6 md:h-auto md:px-10 md:py-14 ">

@@ -35,9 +35,9 @@ function App() {
             <Route
               path="yourbooking"
               element={
-                <ProtectedRoute>
-                  <YourBooking />
-                </ProtectedRoute>
+                // <ProtectedRoute>
+                <YourBooking />
+                // </ProtectedRoute>
               }
             />
             <Route path="auth" element={<Auth />} />
