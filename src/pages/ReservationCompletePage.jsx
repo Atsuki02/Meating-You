@@ -25,7 +25,7 @@ const ReservationCompletePage = () => {
           is confirmed!
         </p>
         <div className="flex flex-row space-x-4">
-          <Button type="home" onClick={() => navigate('/home')}>
+          <Button type="home" onClick={() => navigate('/')}>
             Go to homepage
           </Button>
           <Button type="booking" onClick={() => navigate('/yourbooking')}>

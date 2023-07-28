@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Auth from './pages/Auth';
@@ -14,6 +13,7 @@ import YourBooking from './pages/YourBooking';
 import ProtectedRoute from './features/authentication/ProtectedRoute';
 import PageNotFound from './pages/PageNotFound';
 import ScrollToTop from './ui/ScrollToTop';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 function App() {
   const queryClient = new QueryClient();
@@ -23,8 +23,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route index element={<Navigate replace to="home" />} />
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route element={<Header />}>
             <Route path="booking" element={<Booking />} />
             <Route path="table" element={<Table />} />
@@ -50,7 +49,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
       <Toaster
         position="top-center"
         gutter={12}

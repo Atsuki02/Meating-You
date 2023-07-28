@@ -16,7 +16,7 @@ export function useSignup() {
       toast.success('Account successfully created!');
       dispatch(setUserId(user.user.id));
       dispatch(loginUser());
-      navigate('/home', { replace: true });
+      navigate('/', { replace: true });
     },
     onError: (err) => {
       toast.error('Provided email or password are invalid');

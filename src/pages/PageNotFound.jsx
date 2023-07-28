@@ -9,7 +9,7 @@ function PageNotFound() {
         <h1 className="mb-8">
           The page you are looking for could not be found 😢
         </h1>
-        <Button type="continue" onClick={() => navigate('/home')}>
+        <Button type="continue" onClick={() => navigate('/')}>
           &larr; Go back
         </Button>
       </div>
