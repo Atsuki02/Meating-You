@@ -1,7 +1,7 @@
 # Meatying You
 
 Link:
-https://meating-you.netlify.app/home
+https://meating-you.netlify.app
 
 ## Introduction
 
